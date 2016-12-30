@@ -31,9 +31,7 @@ import pyalpm
 from pycman import config
 from pycman import transaction
 
-handle = None
-
-def remove(pkgs, options):
+def remove(pkgs, options, handle):
 	# prepare target list
 	db = handle.get_localdb()
 	targets = []
@@ -53,7 +51,6 @@ def remove(pkgs, options):
 	return (0 if ok else 1)
 
 def main(rawargs):
-	global handle
 	parser = config.make_parser()
 	group = parser.add_argument_group("Remove options")
 	group.add_argument('-c', '--cascade',
@@ -87,7 +84,7 @@ def main(rawargs):
 		print('error: no targets specified')
 		return 1
 
-	return remove(args.pkgs, args)
+	return remove(args.pkgs, args, handle)
 
 if __name__ == "__main__":
 	ret = main(sys.argv[1:])
