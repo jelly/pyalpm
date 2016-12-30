@@ -29,15 +29,12 @@ import sys
 import pyalpm
 from pycman import config
 
-handle = None
-
-def deptest(deps):
+def deptest(deps, handle):
 	db = handle.get_localdb()
 	missing = [dep for dep in deps if pyalpm.find_satisfier(db.pkgcache, dep) is None]
 	return missing
 
 def main(rawargs):
-	global handle
 	parser = config.make_parser()
 	parser.add_argument('deps', metavar = 'dep', nargs='*',
 			help = "a dependency string, e.g. 'pacman>=3.4.0'")
@@ -46,7 +43,7 @@ def main(rawargs):
 
 	if args.verbose:
 		print("deptest " + " ".join(rawargs), file = sys.stderr)
-	missing = deptest(args.deps)
+	missing = deptest(args.deps, handle)
 
 	if len(missing) == 0:
 		return 0

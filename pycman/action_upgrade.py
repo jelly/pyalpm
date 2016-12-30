@@ -31,9 +31,7 @@ import pyalpm
 from pycman import config
 from pycman import transaction
 
-handle = None
-
-def upgrade(pkgs, options):
+def upgrade(pkgs, options, handle):
 	# prepare target list
 	db = handle.get_localdb()
 	targets = []
@@ -50,7 +48,6 @@ def upgrade(pkgs, options):
 	return (0 if ok else 1)
 
 def main(rawargs):
-	global handle
 	parser = config.make_parser()
 	group = parser.add_argument_group("upgrade options")
 	group.add_argument('-d', '--nodeps',
@@ -77,7 +74,7 @@ def main(rawargs):
 	if args.verbose:
 		print("upgrade " + " ".join(rawargs), file = sys.stderr)
 
-	return upgrade(args.pkgs, args)
+	return upgrade(args.pkgs, args, handle)
 
 if __name__ == "__main__":
 	ret = main(sys.argv[1:])
