@@ -9,7 +9,7 @@ arch:
     - python-nose
 
   script:
-    - yes | pacman -S pacman-git
+    - yes | sudo pacman -S pacman-git
     - python3 -m py_compile $(git ls-files '*.py')
     - sudo python3 setup.py install
     - python3 setup.py test
