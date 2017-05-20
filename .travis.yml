@@ -1,12 +1,15 @@
 sudo: required
 
 arch:
+  repos:
+    - jelle=http://pkgbuild.com/~jelle/repo/x86_64
 
   packages:
     - python
     - python-nose
 
   script:
+    - yes | pacman -S pacman-git
     - python3 -m py_compile $(git ls-files '*.py')
     - sudo python3 setup.py install
     - python3 setup.py test
