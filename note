@@ -1,0 +1,23 @@
+initial:
+
+==19448== LEAK SUMMARY:
+==19448==    definitely lost: 244 bytes in 2 blocks
+==19448==    indirectly lost: 22 bytes in 1 blocks
+==19448==      possibly lost: 6,448 bytes in 12 blocks
+==19448==    still reachable: 610,642 bytes in 1,832 blocks
+
+after tp_dealloc fix:
+
+==19345== LEAK SUMMARY:
+==19345==    definitely lost: 244 bytes in 2 blocks
+==19345==    indirectly lost: 22 bytes in 1 blocks
+==19345==      possibly lost: 6,448 bytes in 12 blocks
+==19345==    still reachable: 552,003 bytes in 317 blocks
+
+left:
+
+==19534==    at 0x483777F: malloc (vg_replace_malloc.c:299)
+==19534==    by 0x5C8C174: alpm_list_append (in /usr/lib/libalpm.so.11.0.2)
+==19534==    by 0x5C8C1D3: alpm_list_add (in /usr/lib/libalpm.so.11.0.2)
+==19534==    by 0x485A4EB: pylist_string_to_alpmlist (util.c:104)
+==19534==    by 0x485BFD7: option_set_cachedirs_alpm (options.c:128)

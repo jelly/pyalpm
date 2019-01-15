@@ -391,6 +391,7 @@ PyTypeObject AlpmHandleType = {
 
 /** Initializes Handle class in module */
 int init_pyalpm_handle(PyObject *module) {
+  printf("init_pyalpm_handle\n");
   PyObject *type;
   if (PyType_Ready(&AlpmHandleType) < 0)
     return -1;
