@@ -14,9 +14,9 @@ def memory():
 
 
 def alpm_things():
-    h = init_with_config('/etc/pacman.conf')
+    #h = init_with_config('/etc/pacman.conf')
     a = 0
-    #h = Handle('/', '/var/lib/pacman')
+    h = Handle('/', '/var/lib/pacman')
 
 
 def test():

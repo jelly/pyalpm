@@ -1,5 +1,12 @@
 initial:
 
+Bare program:
+==1932==    definitely lost: 220 bytes in 1 blocks
+==1932==    indirectly lost: 0 bytes in 0 blocks
+==1932==      possibly lost: 6,464 bytes in 12 blocks
+==1932==    still reachable: 535,001 bytes in 311 blocks
+
+
 ==19448== LEAK SUMMARY:
 ==19448==    definitely lost: 244 bytes in 2 blocks
 ==19448==    indirectly lost: 22 bytes in 1 blocks
@@ -8,13 +15,13 @@ initial:
 
 after tp_dealloc fix:
 
-==19345== LEAK SUMMARY:
-==19345==    definitely lost: 244 bytes in 2 blocks
-==19345==    indirectly lost: 22 bytes in 1 blocks
-==19345==      possibly lost: 6,448 bytes in 12 blocks
-==19345==    still reachable: 552,003 bytes in 317 blocks
+==1971==    definitely lost: 220 bytes in 1 blocks
+==1971==    indirectly lost: 0 bytes in 0 blocks
+==1971==      possibly lost: 6,464 bytes in 12 blocks
+==1971==    still reachable: 535,001 bytes in 311 blocks
 
-left:
+
+left if using pycamn.config init, since cachedirs get set:
 
 ==19534==    at 0x483777F: malloc (vg_replace_malloc.c:299)
 ==19534==    by 0x5C8C174: alpm_list_append (in /usr/lib/libalpm.so.11.0.2)
