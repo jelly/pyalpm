@@ -17,6 +17,7 @@ def alpm_things():
     #h = init_with_config('/etc/pacman.conf')
     a = 0
     h = Handle('/', '/var/lib/pacman')
+    h.cachedirs = ['/var/lib/pacan']
 
 
 def test():

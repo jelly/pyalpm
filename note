@@ -20,11 +20,17 @@ after tp_dealloc fix:
 ==1971==      possibly lost: 6,464 bytes in 12 blocks
 ==1971==    still reachable: 535,001 bytes in 311 blocks
 
-
-left if using pycamn.config init, since cachedirs get set:
+left if using pycman.config init, since cachedirs get set:
 
 ==19534==    at 0x483777F: malloc (vg_replace_malloc.c:299)
 ==19534==    by 0x5C8C174: alpm_list_append (in /usr/lib/libalpm.so.11.0.2)
 ==19534==    by 0x5C8C1D3: alpm_list_add (in /usr/lib/libalpm.so.11.0.2)
 ==19534==    by 0x485A4EB: pylist_string_to_alpmlist (util.c:104)
 ==19534==    by 0x485BFD7: option_set_cachedirs_alpm (options.c:128)
+
+ignorepkgs
+
+==13062==    by 0x62CCA44: alpm_list_append (in /usr/lib/libalpm.so.11.0.1)
+==13062==    by 0x62CCAA3: alpm_list_add (in /usr/lib/libalpm.so.11.0.1)
+==13062==    by 0x62734EB: pylist_string_to_alpmlist (util.c:104)
+==13062==    by 0x6275187: option_set_ignorepkgs_alpm (options.c:176)
