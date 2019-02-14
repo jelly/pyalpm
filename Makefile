@@ -26,3 +26,7 @@ ext-coverage:
 
 open-ext-coverage: ext-coverage
 	${BROWSER} ${EXT_COVERAGE_DIR}/index.html
+
+.PHONY: clean
+clean:
+	-rm -r build
