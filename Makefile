@@ -12,6 +12,9 @@ DOC_DIR=docs
 
 .PHONY: test
 
+build:
+	$(PYTHON) setup.py build
+
 test: test-py
 
 test-py coverage:
